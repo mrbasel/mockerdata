@@ -1,0 +1,8 @@
+.vscode
+launch.json
+settings.json
+
+.git
+
+venv
+__pycache__
