@@ -4,6 +4,7 @@ import json
 
 from data_generator import DataSet, DataGenerator, Field
 
+
 app = Flask(__name__)
 
 
@@ -19,15 +20,7 @@ def create_data():
         rows = request.json.get('rows')
         fields_values = request.json.get('field_values')
 
-        # print(name)
-        # print(data_format)
-        # print(rows)
-        # print(fields_values)
-
-        fields = []
-        for value in fields_values:
-            field = Field(name=value['field'], data_type=value['dataType'])
-            fields.append(field)
+        fields = [Field(name=field['field'], data_type=field['dataType']) for field in fields_values]
 
         data_set = DataSet(
             name=name, 

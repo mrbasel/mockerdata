@@ -22,19 +22,13 @@ class DataGenerator:
             'numerical': self.generate_numerical_data,
             'geographical': self.generate_geographical_data,
         }
-        # Add to list if empty
-        # Else, add update dict item from old list with dict in new list
-
+        
         data = []
         for field in self.data_set.fields:
             data_type = field.data_type.split('-')[0]
             new_data = data_types.get(data_type)(field)
             
             for index, item in enumerate(new_data):
-                # if not data:
-                #     data += new_data
-                # else:
-                #     data[index].update(item)
                 try:
                     data[index].update(item)
                 except IndexError:
@@ -91,10 +85,6 @@ class DataSet:
         self.fields = fields  
 
 
-# ds = DataSet('', 10, '', ['username', 'email', 'personal'] )
-# dg = DataGenerator(ds)
-
-# print(dg.generate_data())
 
 
 class Field:
