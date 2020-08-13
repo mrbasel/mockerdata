@@ -25,3 +25,12 @@ geographical = {
     'geographical-address': fake.address,
     'geographical-street_address': fake.street_address
 }
+
+datetime = {
+    # 'datetime-date_between': fake.date_between,
+    'datetime-month': fake.month,
+    'datetime-month_name': fake.month_name,
+    'datetime-time': fake.time,
+    'datetime-timezone': fake.timezone,
+    'datetime-year': fake.year
+}

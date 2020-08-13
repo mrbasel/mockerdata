@@ -21,6 +21,7 @@ class DataGenerator:
             'personal': self.generate_personal_data,
             'numerical': self.generate_numerical_data,
             'geographical': self.generate_geographical_data,
+            'datetime': self.generate_datetime_data
         }
         
         data = []
@@ -49,17 +50,22 @@ class DataGenerator:
     
     def generate_numerical_data(self, field):
         if self.data_set.fields:
-            data = [
-                {field.name:numerical.get(field.data_type)()}
-                for row in range(self.data_set.rows)
-            ]
-
+            data = [{field.name:i} for i in range(1, self.data_set.rows + 1)]
             return data
 
     def generate_geographical_data(self, field):
         if self.data_set.fields:
             data = [
                 {field.name:geographical.get(field.data_type)()}
+                for row in range(self.data_set.rows)
+            ]
+
+            return data
+    
+    def generate_datetime_data(self, field):
+        if self.data_set.fields:
+            data = [
+                {field.name:datetime.get(field.data_type)()}
                 for row in range(self.data_set.rows)
             ]
 
