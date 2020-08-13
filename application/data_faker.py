@@ -1,3 +1,5 @@
+""" Contains functions used to generate data grouped by category """
+
 from faker import Faker
 from random import randint
 
