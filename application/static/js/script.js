@@ -2,12 +2,17 @@
 let addFieldButton = document.querySelector("#addFieldButton");
 let removeFieldButtons = document.querySelectorAll(".removeFieldButton");
 let tableBody = document.querySelector("tbody");
+let downloadButton = document.querySelector("#download-btn");
 
 
 
 addFieldButton.addEventListener('click', () => {
   AddField();
 });
+
+downloadButton.addEventListener('click', () => {
+  sendDataSet();
+})
 
 
 removeFieldButtons.forEach((btn) => {
