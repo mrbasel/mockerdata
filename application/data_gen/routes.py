@@ -20,7 +20,7 @@ def create_data():
         rows = request.json.get('rows')
         fields_values = request.json.get('field_values')
 
-        fields = [Field(name=field['field'], data_type=field['dataType']) for field in fields_values]
+        fields = [Field(name=field['fieldName'], data_type=field['dataType']) for field in fields_values]
 
         data_set = DataSet(
             name=name, 

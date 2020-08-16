@@ -1,3 +1,5 @@
+import { validateDataType, validateDataFields } from "./validators.js";
+
 
 let addFieldButton = document.querySelector("#addFieldButton");
 let removeFieldButtons = document.querySelectorAll(".removeFieldButton");
@@ -11,6 +13,19 @@ addFieldButton.addEventListener('click', () => {
 });
 
 downloadButton.addEventListener('click', () => {
+  let fielddataTypes = document.querySelectorAll(".data-type");
+  let fieldNames = document.querySelectorAll(".field-name");
+
+  if (!validateDataType(fielddataTypes)) {
+    console.log("Please choose a valid data type");
+    return false;
+  }
+
+  if (!validateDataFields(fieldNames)) {
+    console.log("Please choose a name for your field");
+    return false;
+  }
+
   sendDataSet();
 })
 
@@ -31,7 +46,7 @@ function AddField() {
   tableBody.appendChild(newField)
 }
 
-function createField(index) {
+function createField() {
   let elem = document.createElement("tr");
   elem.classList.add("text-center");
 
@@ -69,11 +84,11 @@ function createField(index) {
       </select>
     </td>
     `;
-  // <th scope="row">${index}</th>
-  // <td><button class="btn btn-dark">Remove</button></td>
+  
   let dataCell = document.createElement('td');
   let removeButton = document.createElement("button");
 
+  // Add remove btn to field
   removeButton.textContent = 'Remove';
   removeButton.classList = ['btn btn-dark'];
   dataCell.appendChild(removeButton)
@@ -88,14 +103,11 @@ function createField(index) {
 
 function removeField(field) {
   let tableBody = document.querySelector("tbody");
-  // let field = tableBody.children[index];
-  // console.log(field);
   tableBody.removeChild(field);
 }
 
 
-
-function getDataSet() {
+export function getDataSet() {
   // Get the dataset the users requested
 
   let dataSetName = document.querySelector("#dataSetName").value;
@@ -107,18 +119,17 @@ function getDataSet() {
 
   let dataSetFieldsValues = dataSetNameFields.map((item, index) => {
     const item2 = dataSetDataTypeFields[index];
-    // return item2.value;
+
     return {
-      field: item.value,
+      fieldName: item.value,
       dataType: item2.value
     }
   });
 
-  // console.log(dataSetFieldsValues);
   return {
-    name: dataSetName,
+    name: dataSetName == "" ? "mock_data" : dataSetName,
     data_format: dataSetFormat,
-    rows: dataSetRows,
+    rows: dataSetRows == null ? 50 : dataSetRows,
     field_values: dataSetFieldsValues,
   };
 }
@@ -140,8 +151,6 @@ function sendDataSet() {
       return Promise.all([response.text(), filename]);
     })
     .then((data) => {
-      // console.log(data[0]);
-      // console.log(data[1]);
       downloadFile(data[0], data[1], "application/json");
     }
     );
