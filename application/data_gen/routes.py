@@ -1,22 +1,18 @@
-from io import StringIO
-import csv
-import datetime
-import json
+from flask import Blueprint, request, render_template
 
-from flask import Flask, render_template, request, Response
-
-from application.data_generator import DataSet, DataGenerator, Field
+from application.data_generator import DataGenerator, DataSet, Field
 from application.file_creator import FileCreator
 
 
-app = Flask(__name__)
+data_gen_bp = Blueprint('data_gen_bp', __name__)
 
-@app.route('/')
+
+@data_gen_bp.route('/')
 def home():
     return render_template('main.html')
 
 
-@app.route('/api/createdata', methods=["POST"])
+@data_gen_bp.route('/api/createdata', methods=["POST"])
 def create_data():
     if request.method == 'POST':
         name = request.json.get('name')
@@ -47,8 +43,3 @@ def create_data():
         response = file_creator.create_file()
         
         return response
-
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

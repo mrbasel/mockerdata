@@ -1,12 +1,12 @@
 from faker import Faker
 
-from data_faker import personal, geographical
+from application.data_faker import personal, geographical
 
 
 class DataGenerator:
     """ Used to generate data
     
-    Args:
+    Attributes:
         data_set (DataSet): the structure for the needed data
     
     """
