@@ -1,6 +1,6 @@
 from faker import Faker
 
-from application.data_faker import personal, geographical, datetime
+from application.data_faker import personal, geographical, datetime, finance
 
 
 class DataGenerator:
@@ -21,7 +21,8 @@ class DataGenerator:
             'personal': self.generate_personal_data,
             'numerical': self.generate_numerical_data,
             'geographical': self.generate_geographical_data,
-            'datetime': self.generate_datetime_data
+            'datetime': self.generate_datetime_data,
+            'finance': self.generate_finance_data
         }
         
         data = []
@@ -66,6 +67,15 @@ class DataGenerator:
         if self.data_set.fields:
             data = [
                 {field.name:datetime.get(field.data_type)()}
+                for row in range(self.data_set.rows)
+            ]
+
+            return data
+    
+    def generate_finance_data(self, field):
+        if self.data_set.fields:
+            data = [
+                {field.name:finance.get(field.data_type)()}
                 for row in range(self.data_set.rows)
             ]
 

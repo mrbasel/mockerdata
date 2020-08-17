@@ -34,3 +34,13 @@ datetime = {
     'datetime-timezone': fake.timezone,
     'datetime-year': fake.year
 }
+
+finance = {
+    'finance-currency_name': fake.currency_name,
+    'finance-currency_code': fake.currency_code,
+    'finance-currency_symbol': fake.currency_symbol,
+    'finance-bban': fake.bban,
+    'finance-iban': fake.iban,
+    'finance-credit_card_number': fake.credit_card_number,
+    'finance-credit_card_provider': fake.credit_card_provider
+}

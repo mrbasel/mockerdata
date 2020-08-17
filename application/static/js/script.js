@@ -53,7 +53,7 @@ function createField() {
   elem.innerHTML = `
     <td><input type="text" class="form-control field-name" name="field-name" /></td>
     <td>
-        <select class="form-control data-type">
+      <select class="form-control data-type">
           <option value="">Select data type</option>
           <optgroup label="Personal data">
               <option value="personal-firstname">Firstname</option>
@@ -65,7 +65,7 @@ function createField() {
           </optgroup>
           <optgroup label="numerical">
               <option value="numerical-id">ID</option>
-              <option value="numerical-range">Number range</option>
+              <option value="numerical-range">Range</option>
           </optgroup>
           <optgroup label="geographical">
               <option value="geographical-country">country</option>
@@ -81,10 +81,19 @@ function createField() {
               <option value="datetime-timezone">Timezone</option>
               <option value="datetime-year">Year</option>
           </optgroup>
+          <optgroup label="finance">
+              <option value="finance-currency_name">Currency name</option>
+              <option value="finance-currency_code">Currency code</option>
+              <option value="finance-currency_symbol">Currency sympol</option>
+              <option value="finance-bban">BBAN</option>
+              <option value="finance-iban">IBAN</option>
+              <option value="finance-credit_card_number">Credit card number</option>
+              <option value="finance-credit_card_provider">Credit card provider</option>
+          </optgroup>
       </select>
     </td>
     `;
-  
+
   let dataCell = document.createElement('td');
   let removeButton = document.createElement("button");
 
