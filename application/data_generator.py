@@ -1,6 +1,6 @@
 from faker import Faker
 
-from application.data_faker import personal, geographical
+from application.data_faker import personal, geographical, datetime
 
 
 class DataGenerator:
