@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>GenerateMockData</title>
+</head>
+
+<body class="main-color">
+    <nav class="navbar py-2 main-color">
+        <div class="navbar-brand ml-6">
+            <a href="#" class="navbar-item ml-6">
+                <h1 class="has-text-weight-bold is-size-4 has-text-white">GenerateMockData</h1>
+            </a>
+            <a role="button" class="navbar-burger burger has-text-white" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu mr-6">
+            <div class="navbar-end mr-6">
+                <a href="" class="navbar-item mx-5 has-text-white">About</a>
+                <a href="" class="navbar-item mx-5 has-text-white">Help</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Hero section -->
+    <section class="hero has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title is-1 has-text-white">
+                    GenerateMockData
+                </h1>
+                <h2 class="subtitle is-6 mt-3 has-text-white">
+                    A tool for generating amazing mock data for testing your websites and apps!
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Main section -->
+    <section class="section main-color">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <div class="box data-field secondary-color">
+                    <div class="columns">
+                        <div class="column">
+                            <p class="has-text-centered has-text-white">Field Name</p>
+                        </div>
+                        <div class="column">
+                            <p class="has-text-centered has-text-white ml-6">Data type</p>
+                        </div>
+                        <div class="column">
+                            <p class="has-text-centered has-text-white">Delete</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-fields mb-5">
+
+                    <div class="box data-field secondary-color">
+                        <div class="columns is-centered">
+                            <div class="column">
+                                <input type="text" class="input field-name mx-4">
+                            </div>
+                            <div class="column">
+                                <div class="select ml-6">
+                                    <select class="data-type">
+                                        <option value="">Select data type</option>
+                                        <optgroup label="Personal data">
+                                            <option value="personal-firstname">Firstname</option>
+                                            <option value="personal-lastname">Lastname</option>
+                                            <option value="personal-username">Username</option>
+                                            <option value="personal-email">Email</option>
+                                            <option value="personal-age">Age</option>
+                                            <option value="personal-password">Password</option>
+                                        </optgroup>
+                                        <optgroup label="numerical">
+                                            <option value="numerical-id">ID</option>
+                                            <option value="numerical-range">Range</option>
+                                        </optgroup>
+                                        <optgroup label="geographical">
+                                            <option value="geographical-country">country</option>
+                                            <option value="geographical-city">city</option>
+                                            <option value="geographical-address">address</option>
+                                            <option value="geographical-street_address">street_address</option>
+                                        </optgroup>
+                                        <optgroup label="datetime">
+                                            <!-- <option value="datetime-date_between"></option> -->
+                                            <option value="datetime-month">Month number</option>
+                                            <option value="datetime-month_name">Month name</option>
+                                            <option value="datetime-time">Time (24 hour format)</option>
+                                            <option value="datetime-timezone">Timezone</option>
+                                            <option value="datetime-year">Year</option>
+                                        </optgroup>
+                                        <optgroup label="finance">
+                                            <option value="finance-currency_name">Currency name</option>
+                                            <option value="finance-currency_code">Currency code</option>
+                                            <option value="finance-currency_symbol">Currency sympol</option>
+                                            <option value="finance-bban">BBAN</option>
+                                            <option value="finance-iban">IBAN</option>
+                                            <option value="finance-credit_card_number">Credit card number</option>
+                                            <option value="finance-credit_card_provider">Credit card provider</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="column has-text-centered">
+                                <a class="delete removeFieldButton mt-2"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button id="addFieldButton" class="button is-info">Add Field</button>
+
+                <div class="container options-container mt-6">
+
+                    <div class="field is-horizontal ">
+                        <div class="field-label is-normal">
+                            <label class="label has-text-white">Dataset name</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" id="dataSetName" type="text" value="mock_data">
+                                </div>
+                            </div>
+                            <div class="field-label is-normal">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal ">
+                        <div class="field-label is-normal">
+                            <label class="label has-text-white">#Rows</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" id="rowsNum" type="number" value="50">
+                                </div>
+                            </div>
+                            <div class="field-label is-normal">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label has-text-white">Data Format</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field is-narrow">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select class="select" id="dataSetFormat">
+                                            <option value="json">JSON</option>
+                                            <option value="csv">CSV</option>
+                                            <option value="html">HTML</option>
+                                            <option value="excel">EXCEL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped is-grouped-centered mt-5 ">
+                        <p class="control">
+                            <a id="download-btn" class="button is-info">
+                                Download
+                            </a>
+                        </p>
+                        <p class="control">
+                            <a class="button is-info is-light">
+                                Preview
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        </div>
+    </section>
+
+
+    <footer class="footer main-color mt-6">
+        <div class="content">
+            footer
+        </div>
+    </footer>
+
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>

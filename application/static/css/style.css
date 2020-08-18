@@ -1,6 +1,36 @@
-/* Main styles */
+html, body {
+    height: 100%;
+    background-color:  rgb(14,36,57);
+}
 
-* {
-    margin: 0;
-    padding: 0;
+body {
+    color: #fff;
+}
+
+
+/* Colors */
+
+.main-color {
+    background-color: rgb(14,36,57);
+
+}
+
+.secondary-color {
+    background-color: #0f1c29;
+}
+
+/* Extra styling :) */
+
+.navbar-item:hover {
+    background-color:transparent !important;
+}
+
+.options-container {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 3em;
+}
+
+
+footer {
+    border-top: 1px solid #fff;
 }

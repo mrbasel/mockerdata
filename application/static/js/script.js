@@ -3,7 +3,6 @@ import { validateDataType, validateDataFields } from "./validators.js";
 
 let addFieldButton = document.querySelector("#addFieldButton");
 let removeFieldButtons = document.querySelectorAll(".removeFieldButton");
-let tableBody = document.querySelector("tbody");
 let downloadButton = document.querySelector("#download-btn");
 
 
@@ -32,29 +31,43 @@ downloadButton.addEventListener('click', () => {
 
 removeFieldButtons.forEach((btn) => {
   btn.addEventListener('click', () => {
-    let field = btn.parentElement.parentElement;
+    let field = btn.parentElement.parentElement.parentElement;
     removeField(field);
   })
 })
 
 
 function AddField() {
-  let tableBody = document.querySelector("tbody");
-  let index = tableBody.childElementCount;
+  let fieldContainer = document.querySelector(".data-fields");
+  let index = fieldContainer.childElementCount;
   let newField = createField(index + 1);
 
-  tableBody.appendChild(newField)
+  fieldContainer.appendChild(newField);
+
+  let removeButton = Array.from(
+    document.querySelectorAll(".removeFieldButton")
+  ).slice(-1)[0];
+
+  removeButton.addEventListener("click", () => {
+    removeField(newField);
+  });
 }
 
 function createField() {
-  let elem = document.createElement("tr");
-  elem.classList.add("text-center");
+  let elem = document.createElement("div");
+  elem.classList.add("box", "data-field", "secondary-color");
+
+  // TODO: Refactor this
 
   elem.innerHTML = `
-    <td><input type="text" class="form-control field-name" name="field-name" /></td>
-    <td>
-      <select class="form-control data-type">
-          <option value="">Select data type</option>
+    <div class="columns is-centered">
+        <div class="column">
+            <input type="text" class="input field-name mx-4">
+        </div>
+        <div class="column">
+            <div class="select ml-6">
+                <select class="data-type">
+                    <option value="">Select data type</option>
           <optgroup label="Personal data">
               <option value="personal-firstname">Firstname</option>
               <option value="personal-lastname">Lastname</option>
@@ -90,29 +103,21 @@ function createField() {
               <option value="finance-credit_card_number">Credit card number</option>
               <option value="finance-credit_card_provider">Credit card provider</option>
           </optgroup>
-      </select>
-    </td>
+                </select>
+            </div>
+        </div>
+        <div class="column has-text-centered">
+            <a class="delete removeFieldButton mt-2"></a>
+        </div>
+    </div>
     `;
-
-  let dataCell = document.createElement('td');
-  let removeButton = document.createElement("button");
-
-  // Add remove btn to field
-  removeButton.textContent = 'Remove';
-  removeButton.classList = ['btn btn-dark'];
-  dataCell.appendChild(removeButton)
-  elem.appendChild(dataCell)
-
-  removeButton.addEventListener("click", () => {
-    removeField(elem);
-  });
 
   return elem
 }
 
 function removeField(field) {
-  let tableBody = document.querySelector("tbody");
-  tableBody.removeChild(field);
+  let fieldContainer = document.querySelector(".data-fields");
+  fieldContainer.removeChild(field);
 }
 
 
@@ -166,7 +171,7 @@ function sendDataSet() {
 }
 
 
-function downloadFile(data, fileName, type = "text/plain") {
+function downloadFile(data, fileName, type="text/plain") {
   // Create an invisible A element
   const a = document.createElement("a");
   a.style.display = "none";

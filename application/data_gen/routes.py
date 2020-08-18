@@ -9,7 +9,7 @@ data_gen_bp = Blueprint('data_gen_bp', __name__)
 
 @data_gen_bp.route('/')
 def home():
-    return render_template('main.html')
+    return render_template('index.html')
 
 
 @data_gen_bp.route('/api/createdata', methods=["POST"])
