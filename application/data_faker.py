@@ -8,9 +8,6 @@ fake = Faker()
 personal =  {
     'personal-firstname': fake.first_name,
     'personal-lastname': fake.last_name,
-    'personal-username': fake.user_name,
-    'personal-email': fake.email,
-    'personal-password': fake.password,
     'personal-age': lambda : randint(15, 100)
 }
 
@@ -48,4 +45,15 @@ finance = {
 phone_numbers = {
     'phone_numbers-country_calling_code': fake.country_calling_code,
     'phone_numbers-phone_number': fake.phone_number,
+}
+
+
+internet = {
+    'internet-username': fake.user_name,
+    'internet-email': fake.email,
+    'internet-company_email': fake.company_email,
+    'internet-password': fake.password,
+    'internet-domain_name': fake.domain_name,
+    'internet-url': fake.url,
+    'internet-image_url': fake.image_url
 }

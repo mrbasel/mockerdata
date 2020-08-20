@@ -36,10 +36,7 @@ export default class FieldsHandler {
                     <optgroup label="Personal data">
                         <option value="personal-firstname">Firstname</option>
                         <option value="personal-lastname">Lastname</option>
-                        <option value="personal-username">Username</option>
-                        <option value="personal-email">Email</option>
                         <option value="personal-age">Age</option>
-                        <option value="personal-password">Password</option>
                     </optgroup>
                     <optgroup label="numerical">
                         <option value="numerical-id">ID</option>
@@ -72,7 +69,16 @@ export default class FieldsHandler {
                         <option value="phone_numbers-country_calling_code">Country calling code</option>
                         <option value="phone_numbers-phone_number">Phone number</option>
                     </optgroup>
-                </select>
+                    <optgroup label="internet">
+                        <option value="internet-username">Username</option>
+                        <option value="internet-email">Email</option>
+                        <option value="internet-company_email">Company email</option>
+                        <option value="internet-password">Password</option>
+                        <option value="internet-domain_name">Domain name</option>
+                        <option value="internet-url">Url</option>
+                        <option value="internet-image_url">Image url</option>
+                    </optgroup>
+              </select>
               </div>
           </div>
           <div class="column has-text-centered">

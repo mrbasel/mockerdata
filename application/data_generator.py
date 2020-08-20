@@ -1,6 +1,6 @@
 from faker import Faker
 
-from application.data_faker import personal, geographical, datetime, finance, phone_numbers
+from application.data_faker import *
 
 
 class DataGenerator:
@@ -23,7 +23,8 @@ class DataGenerator:
             'geographical': self.generate_geographical_data,
             'datetime': self.generate_datetime_data,
             'finance': self.generate_finance_data,
-            'phone_numbers': self.generate_phone_nums_data
+            'phone_numbers': self.generate_phone_nums_data,
+            'internet': self.generate_internet_data
         }
         
         data = []
@@ -90,6 +91,13 @@ class DataGenerator:
 
         return data 
 
+    def generate_internet_data(self, field):
+        data = [
+                {field.name:internet.get(field.data_type)()}
+                for row in range(self.data_set.rows)
+            ]
+
+        return data 
 
 class DataSet:
     """  The fields of the dataset 
