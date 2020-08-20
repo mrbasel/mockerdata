@@ -44,6 +44,11 @@ export function sendDataSet() {
     body: dataSet,
   })
     .then((response) => {
+      if (response.status != 200) {
+        alert('Sorry, something went wrong');
+        return;
+      }
+
       let filename = response.headers
         .get("Content-Disposition")
         .split("filename=")[1];

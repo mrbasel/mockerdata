@@ -34,7 +34,10 @@ def create_data():
              )
         
         data_generator = DataGenerator(data_set)
-        data = data_generator.generate_data()
+        try:
+            data = data_generator.generate_data()
+        except TypeError as e:
+            return 'Invalid data', 400
         
         if not download_file:
             return jsonify(data)
