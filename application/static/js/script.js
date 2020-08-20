@@ -1,4 +1,4 @@
-import { validateDataType, validateDataFields } from "./validators.js";
+import { validateDataType, validateDataFields, validateRowsNum } from "./validators.js";
 import FieldsHandler from "./fields_handler.js";
 import { sendDataSet } from "./dataset.js";
 import { showPreviewModal, hidePreviewModal } from "./modals.js";
@@ -27,6 +27,13 @@ previewButton.addEventListener("click", () => {
   showPreviewModal();
 });
 
+const rowsNum = document.querySelector("#rowsNum");
+
+rowsNum.addEventListener("change", () => {
+  validateRowsNum();
+});
+
+
 
 addFieldButton.addEventListener('click', () => {
   let fieldHandler = new FieldsHandler();
@@ -37,15 +44,16 @@ downloadButton.addEventListener('click', () => {
   let fielddataTypes = document.querySelectorAll(".data-type");
   let fieldNames = document.querySelectorAll(".field-name");
 
+  if (!validateDataFields(fieldNames)) {
+    alert("Please choose a name for your field");
+    return;
+  }
+  
   if (!validateDataType(fielddataTypes)) {
-    console.log("Please choose a valid data type");
+    alert("Please choose a valid data type");
     return;
   }
 
-  if (!validateDataFields(fieldNames)) {
-    console.log("Please choose a name for your field");
-    return;
-  }
 
   sendDataSet();
 })

@@ -19,3 +19,12 @@ export function validateDataFields(dataSetFields) {
   }
   return true;
 }
+
+
+export function validateRowsNum(rowsNum) {
+  if (rowsNum.value > 300) {
+    rowsNum.value = 300;
+  } else if (rowsNum.value <= 0) {
+    rowsNum.value = 1;
+  }
+}
