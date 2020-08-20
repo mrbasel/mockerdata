@@ -182,7 +182,7 @@
                             </a>
                         </p>
                         <p class="control">
-                            <a class="button is-info is-light">
+                            <a id="preview-btn" class="button is-info is-light">
                                 Preview
                             </a>
                         </p>
@@ -192,6 +192,33 @@
 
             </div>
         </div>
+
+        <!-- Preview Modal -->
+        <div id="preview-modal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Preview</p>
+                    <button class="delete close-modal" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body pb-6">
+                    <div class="content">
+                        <table id="preview-table" class="table">
+                            <thead>
+                                <tr id="head-row">
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button close-modal">Close</button>
+                </footer>
+            </div>
+        </div>
+        <!-- End Modal -->
 
 
         </div>

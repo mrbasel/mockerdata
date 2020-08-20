@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, jsonify
 
 from application.data_generator import DataGenerator, DataSet, Field
 from application.file_creator import FileCreator
@@ -19,6 +19,7 @@ def create_data():
         data_format = request.json.get('data_format')
         rows = request.json.get('rows')
         fields_values = request.json.get('field_values')
+        download_file = request.json.get('download_file')
 
         fields = [Field(name=field['fieldName'], data_type=field['dataType']) for field in fields_values]
 
@@ -32,13 +33,10 @@ def create_data():
         data_generator = DataGenerator(data_set)
         data = data_generator.generate_data()
         
+        if not download_file:
+            return jsonify(data)
 
-        # Create a response containing the file with the specified format 
-        # In more details:
-        # Gets a function from dict that creates a response 
-        # containing a file with specified format
 
-        # response = file_formats.get(data_format)(data, name)
         file_creator = FileCreator(data, name, data_format)
         response = file_creator.create_file()
         
