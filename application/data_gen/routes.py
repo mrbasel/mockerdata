@@ -14,6 +14,9 @@ def home():
 
 @data_gen_bp.route('/api/createdata', methods=["POST"])
 def create_data():
+
+    # TODO: Change some vars names to better names
+
     if request.method == 'POST':
         name = request.json.get('name')
         data_format = request.json.get('data_format')
