@@ -44,3 +44,8 @@ finance = {
     'finance-credit_card_number': fake.credit_card_number,
     'finance-credit_card_provider': fake.credit_card_provider
 }
+
+phone_numbers = {
+    'phone_numbers-country_calling_code': fake.country_calling_code,
+    'phone_numbers-phone_number': fake.phone_number,
+}

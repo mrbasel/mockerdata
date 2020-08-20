@@ -1,6 +1,6 @@
 from faker import Faker
 
-from application.data_faker import personal, geographical, datetime, finance
+from application.data_faker import personal, geographical, datetime, finance, phone_numbers
 
 
 class DataGenerator:
@@ -22,7 +22,8 @@ class DataGenerator:
             'numerical': self.generate_numerical_data,
             'geographical': self.generate_geographical_data,
             'datetime': self.generate_datetime_data,
-            'finance': self.generate_finance_data
+            'finance': self.generate_finance_data,
+            'phone_numbers': self.generate_phone_nums_data
         }
         
         data = []
@@ -80,6 +81,14 @@ class DataGenerator:
             ]
 
             return data
+    
+    def generate_phone_nums_data(self, field):
+        data = [
+                {field.name:phone_numbers.get(field.data_type)()}
+                for row in range(self.data_set.rows)
+            ]
+
+        return data 
 
 
 class DataSet:
