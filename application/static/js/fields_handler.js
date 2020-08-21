@@ -40,7 +40,6 @@ export default class FieldsHandler {
                     </optgroup>
                     <optgroup label="numerical">
                         <option value="numerical-id">ID</option>
-                        <option value="numerical-range">Range</option>
                     </optgroup>
                     <optgroup label="geographical">
                         <option value="geographical-country">country</option>
