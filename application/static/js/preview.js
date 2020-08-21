@@ -5,7 +5,7 @@ export default function previewData() {
     let dataSet = getDataSet(false);
     dataSet.rows = 10;
 
-    fetch(window.origin + "/api/createdata", {
+    fetch(window.origin + "/api/create/file", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

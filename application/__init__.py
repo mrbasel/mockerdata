@@ -7,9 +7,11 @@ def create_app():
     app = Flask(__name__)
 
     with app.app_context():
-        from .data_gen.routes import data_gen_bp
+        from .main.routes import main_bp
+        from .api.routes import api_bp
 
         # Register blueprints
-        app.register_blueprint(data_gen_bp)
+        app.register_blueprint(main_bp)
+        app.register_blueprint(api_bp)
 
         return app

@@ -1,19 +1,15 @@
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, jsonify
+
 
 from application.data_generator import DataGenerator, DataSet, Field
 from application.file_creator import FileCreator
 
 
-data_gen_bp = Blueprint('data_gen_bp', __name__)
+api_bp = Blueprint('api_bp', __name__)
 
 
-@data_gen_bp.route('/')
-def home():
-    return render_template('index.html')
-
-
-@data_gen_bp.route('/api/createdata', methods=["POST"])
-def create_data():
+@api_bp.route('/api/create/file', methods=["POST"])
+def create_file():
 
     # TODO: Change some vars names to better names
 
