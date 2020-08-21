@@ -30,7 +30,7 @@ previewButton.addEventListener("click", () => {
 const rowsNum = document.querySelector("#rowsNum");
 
 rowsNum.addEventListener("change", () => {
-  validateRowsNum();
+  validateRowsNum(rowsNum);
 });
 
 
