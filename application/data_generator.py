@@ -115,7 +115,13 @@ class DataSet:
         self.name = name
         self.rows = rows
         self.data_format = data_format
-        self.fields = fields  
+        self.fields = fields
+
+        if rows > 300:
+            self.rows = 300
+        
+        if rows < 1:
+            self.rows = 1
 
 
 
