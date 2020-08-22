@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel='icon' type='image/x-icon' href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>mockerdata</title>
 </head>
 
@@ -32,14 +33,15 @@
 
 
     <!-- Hero section -->
-    <section class="hero has-text-centered">
+    <section class="hero secondary-color has-text-centered">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title is-1 has-text-white">
+                <h1 class="title is-4 has-text-white">
                     MockerData
                 </h1>
-                <h2 class="subtitle is-6 mt-3 has-text-white">
-                    A tool for generating amazing mock data for testing your websites and apps!
+                <h2 class="subtitle is-4 mt-3 has-text-white">
+                    The only tool you need for generating mock data for testing your websites and apps!
+                    <p>Choose from a wide variety of data categories and formats.</p>
                 </h2>
             </div>
         </div>
@@ -235,8 +237,8 @@
 
 
     <footer class="footer main-color mt-6">
-        <div class="content">
-            footer
+        <div class="content has-text-centered">
+            @ 2020 MOCKERDATA. ALL RIGHTS RESERVED  
         </div>
     </footer>
 
