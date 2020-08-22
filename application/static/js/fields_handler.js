@@ -4,8 +4,13 @@ export default class FieldsHandler {
   
   AddField() {
     let index = this.fieldContainer.childElementCount;
+    
+    if (index >= 5){
+      alert("Sorry, the maximum number of fields is 5");
+      return;
+    } 
+    
     let newField = this.createField(index + 1);
-  
     this.fieldContainer.appendChild(newField);
   
     let removeButton = Array.from(
