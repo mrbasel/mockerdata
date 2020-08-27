@@ -1,8 +1,6 @@
 # Mockerdata
 
-Mockerdata is a webapp used for generating mock and test data in many formats
-
-[link](https://www.mockerdata.com/)
+[Mockerdata](https://www.mockerdata.com/) is a webapp used for generating mock and test data in many formats
 
 ## Installation
 
@@ -10,6 +8,7 @@ Clone repo and change directory:
 
 ```
 git clone https://github.com/mrbasel/mockerdata.git
+
 cd mockerdata
 
 ```
@@ -30,7 +29,7 @@ Run app:
 
 # Licence
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/mrbasel/mockerdata/blob/master/LICENSE)
 
 
 
