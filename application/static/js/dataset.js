@@ -47,13 +47,13 @@ export function sendDataSet() {
         return;
       }
 
-      let filename = response.headers
-        .get("Content-Disposition")
-        .split("filename=")[1];
-      return Promise.all([response.text(), filename]);
+      let filename = response.headers.get("Content-Disposition").split("filename=")[1];
+      let mimeType = response.headers.get("Content-Type").split(';')[0];
+
+      return Promise.all([response.text(), filename, mimeType]);
     })
     .then((data) => {
-      downloadFile(data[0], data[1], "application/json");
+      downloadFile(data[0], data[1], data[2]);
     });
 }
 
