@@ -106,7 +106,7 @@ class DataSet:
         name (str): name of this dataset
         rows (int): number of rows for this dataset
         data_format (str): format for this dataset.
-            available formats are excell, JSON, HTML, SQL
+            available formats are csv, JSON and HTML
         fields (list): List of 'Field' objects 
         
     """

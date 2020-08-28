@@ -1,6 +1,4 @@
 
-// TODO: REFACTOR: Change function names
-
 export function getDataSet(downloadFile=true) {
   // Get the dataset the users requested
 
