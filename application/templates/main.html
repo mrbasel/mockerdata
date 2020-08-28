@@ -1,313 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel='icon' type='image/x-icon' href="{{ url_for('static', filename='favicon.ico') }}" />
-    <title>mockerdata - generate test data for your apps</title>
-</head>
+{% block content %}
 
-<body class="main-color">
-    <!-- Navbar -->
-    <nav class="navbar py-2 main-color">
-        <div class="navbar-brand ml-6">
-            <a href="#" class="navbar-item ml-6">
-                <p class="has-text-weight-bold is-size-4 has-text-white">MockerData</p>
-            </a>
-            <a role="button" class="navbar-burger burger has-text-white" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
+<!-- Hero section -->
+<section class="hero secondary-color has-text-centered">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-4 has-text-white">
+                MockerData
+            </h1>
+            <h2 class="subtitle is-4 mt-3 has-text-white">
+                An open source webapp for generating mock data for testing your websites and apps!
+            </h2>
         </div>
+    </div>
+</section>
 
-        <div class="navbar-menu mr-6">
-            <div class="navbar-end mr-6">
-                <a href="https://github.com/mrbasel/mockerdata" class="navbar-item mx-5 has-text-white">Github</a>
-                <!-- <a href="" class="navbar-item mx-5 has-text-white">Help</a> -->
+
+<!-- Main section -->
+<section class="section main-color">
+    <div class="columns is-centered">
+        <div class="column is-half">
+            <div class="box data-field secondary-color">
+                <div class="columns">
+                    <div class="column">
+                        <p class="has-text-centered has-text-white">Field Name</p>
+                    </div>
+                    <div class="column">
+                        <p class="has-text-centered has-text-white ml-6">Data type</p>
+                    </div>
+                    <div class="column">
+                        <p class="has-text-centered has-text-white">Delete</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
 
-
-    <!-- Hero section -->
-    <section class="hero secondary-color has-text-centered">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title is-4 has-text-white">
-                    MockerData
-                </h1>
-                <h2 class="subtitle is-4 mt-3 has-text-white">
-                    The only tool you need for generating mock data for testing your websites and apps!
-                    <p>Choose from a wide variety of data categories and formats.</p>
-                </h2>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Main section -->
-    <section class="section main-color">
-        <div class="columns is-centered">
-            <div class="column is-half">
+            <div class="data-fields mb-5">
+                <!-- Field 1 -->
                 <div class="box data-field secondary-color">
-                    <div class="columns">
+                    <div class="columns is-centered">
                         <div class="column">
-                            <p class="has-text-centered has-text-white">Field Name</p>
+                            <input type="text" class="input field-name mx-4" value="username">
                         </div>
                         <div class="column">
-                            <p class="has-text-centered has-text-white ml-6">Data type</p>
+                            <div class="select ml-6">
+                                <select class="data-type">
+                                    <option value="">Select data type</option>
+                                    <optgroup label="Personal data">
+                                        <option value="personal-firstname">Firstname</option>
+                                        <option value="personal-lastname">Lastname</option>
+                                        <option value="personal-age">Age</option>
+                                    </optgroup>
+                                    <optgroup label="numerical">
+                                        <option value="numerical-id">ID (Row number)</option>
+                                    </optgroup>
+                                    <optgroup label="geographical">
+                                        <option value="geographical-country">country</option>
+                                        <option value="geographical-city">city</option>
+                                        <option value="geographical-address">address</option>
+                                        <option value="geographical-street_address">street_address</option>
+                                    </optgroup>
+                                    <optgroup label="datetime">
+                                        <!-- <option value="datetime-date_between"></option> -->
+                                        <option value="datetime-month">Month number</option>
+                                        <option value="datetime-month_name">Month name</option>
+                                        <option value="datetime-time">Time (24 hour format)</option>
+                                        <option value="datetime-timezone">Timezone</option>
+                                        <option value="datetime-year">Year</option>
+                                    </optgroup>
+                                    <optgroup label="finance">
+                                        <option value="finance-currency_name">Currency name</option>
+                                        <option value="finance-currency_code">Currency code</option>
+                                        <option value="finance-currency_symbol">Currency sympol</option>
+                                        <option value="finance-bban">BBAN</option>
+                                        <option value="finance-iban">IBAN</option>
+                                        <option value="finance-credit_card_number">Credit card number</option>
+                                        <option value="finance-credit_card_provider">Credit card provider</option>
+                                    </optgroup>
+                                    <optgroup label="phone numbers">
+                                        <option value="phone_numbers-country_calling_code">Country calling code</option>
+                                        <option value="phone_numbers-phone_number">Phone number</option>
+                                    </optgroup>
+                                    <optgroup label="internet">
+                                        <option value="internet-username" selected>Username</option>
+                                        <option value="internet-email">Email</option>
+                                        <option value="internet-company_email">Company email</option>
+                                        <option value="internet-password">Password</option>
+                                        <option value="internet-domain_name">Domain name</option>
+                                        <option value="internet-url">Url</option>
+                                        <option value="internet-image_url">Image url</option>
+                                    </optgroup>
+                                </select>
+                            </div>
                         </div>
-                        <div class="column">
-                            <p class="has-text-centered has-text-white">Delete</p>
+                        <div class="column has-text-centered">
+                            <a class="delete removeFieldButton mt-2"></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="data-fields mb-5">
-                    <!-- Field 1 -->
-                    <div class="box data-field secondary-color">
-                        <div class="columns is-centered">
-                            <div class="column">
-                                <input type="text" class="input field-name mx-4" value="username">
+                <!-- Field 2 -->
+                <div class="box data-field secondary-color">
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <input type="text" class="input field-name mx-4" value="email">
+                        </div>
+                        <div class="column">
+                            <div class="select ml-6">
+                                <select class="data-type">
+                                    <option value="">Select data type</option>
+                                    <optgroup label="Personal data">
+                                        <option value="personal-firstname">Firstname</option>
+                                        <option value="personal-lastname">Lastname</option>
+                                        <option value="personal-age">Age</option>
+                                    </optgroup>
+                                    <optgroup label="numerical">
+                                        <option value="numerical-id">ID (Row number)</option>
+                                    </optgroup>
+                                    <optgroup label="geographical">
+                                        <option value="geographical-country">country</option>
+                                        <option value="geographical-city">city</option>
+                                        <option value="geographical-address">address</option>
+                                        <option value="geographical-street_address">street_address</option>
+                                    </optgroup>
+                                    <optgroup label="datetime">
+                                        <!-- <option value="datetime-date_between"></option> -->
+                                        <option value="datetime-month">Month number</option>
+                                        <option value="datetime-month_name">Month name</option>
+                                        <option value="datetime-time">Time (24 hour format)</option>
+                                        <option value="datetime-timezone">Timezone</option>
+                                        <option value="datetime-year">Year</option>
+                                    </optgroup>
+                                    <optgroup label="finance">
+                                        <option value="finance-currency_name">Currency name</option>
+                                        <option value="finance-currency_code">Currency code</option>
+                                        <option value="finance-currency_symbol">Currency sympol</option>
+                                        <option value="finance-bban">BBAN</option>
+                                        <option value="finance-iban">IBAN</option>
+                                        <option value="finance-credit_card_number">Credit card number</option>
+                                        <option value="finance-credit_card_provider">Credit card provider</option>
+                                    </optgroup>
+                                    <optgroup label="phone numbers">
+                                        <option value="phone_numbers-country_calling_code">Country calling code</option>
+                                        <option value="phone_numbers-phone_number">Phone number</option>
+                                    </optgroup>
+                                    <optgroup label="internet">
+                                        <option value="internet-username">Username</option>
+                                        <option value="internet-email" selected>Email</option>
+                                        <option value="internet-company_email">Company email</option>
+                                        <option value="internet-password">Password</option>
+                                        <option value="internet-domain_name">Domain name</option>
+                                        <option value="internet-url">Url</option>
+                                        <option value="internet-image_url">Image url</option>
+                                    </optgroup>
+                                </select>
                             </div>
-                            <div class="column">
-                                <div class="select ml-6">
-                                    <select class="data-type">
-                                        <option value="">Select data type</option>
-                                        <optgroup label="Personal data">
-                                            <option value="personal-firstname">Firstname</option>
-                                            <option value="personal-lastname">Lastname</option>
-                                            <option value="personal-age">Age</option>
-                                        </optgroup>
-                                        <optgroup label="numerical">
-                                            <option value="numerical-id">ID (Row number)</option>
-                                        </optgroup>
-                                        <optgroup label="geographical">
-                                            <option value="geographical-country">country</option>
-                                            <option value="geographical-city">city</option>
-                                            <option value="geographical-address">address</option>
-                                            <option value="geographical-street_address">street_address</option>
-                                        </optgroup>
-                                        <optgroup label="datetime">
-                                            <!-- <option value="datetime-date_between"></option> -->
-                                            <option value="datetime-month">Month number</option>
-                                            <option value="datetime-month_name">Month name</option>
-                                            <option value="datetime-time">Time (24 hour format)</option>
-                                            <option value="datetime-timezone">Timezone</option>
-                                            <option value="datetime-year">Year</option>
-                                        </optgroup>
-                                        <optgroup label="finance">
-                                            <option value="finance-currency_name">Currency name</option>
-                                            <option value="finance-currency_code">Currency code</option>
-                                            <option value="finance-currency_symbol">Currency sympol</option>
-                                            <option value="finance-bban">BBAN</option>
-                                            <option value="finance-iban">IBAN</option>
-                                            <option value="finance-credit_card_number">Credit card number</option>
-                                            <option value="finance-credit_card_provider">Credit card provider</option>
-                                        </optgroup>
-                                        <optgroup label="phone numbers">
-                                            <option value="phone_numbers-country_calling_code">Country calling code</option>
-                                            <option value="phone_numbers-phone_number">Phone number</option>
-                                        </optgroup>
-                                        <optgroup label="internet">
-                                            <option value="internet-username" selected>Username</option>
-                                            <option value="internet-email">Email</option>
-                                            <option value="internet-company_email">Company email</option>
-                                            <option value="internet-password">Password</option>
-                                            <option value="internet-domain_name">Domain name</option>
-                                            <option value="internet-url">Url</option>
-                                            <option value="internet-image_url">Image url</option>
-                                        </optgroup>
+                        </div>
+                        <div class="column has-text-centered">
+                            <a class="delete removeFieldButton mt-2"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button id="addFieldButton" class="button is-info">Add Field</button>
+
+            <div class="container options-container mt-6">
+
+                <div class="field is-horizontal ">
+                    <div class="field-label is-normal">
+                        <label class="label has-text-white">Dataset name</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" id="dataSetName" type="text" value="mock_data">
+                            </div>
+                        </div>
+                        <div class="field-label is-normal">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal ">
+                    <div class="field-label is-normal">
+                        <label class="label has-text-white">#Rows</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" id="rowsNum" type="number" value="50">
+                            </div>
+                        </div>
+                        <div class="field-label is-normal">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label has-text-white">Data Format</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field is-narrow">
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select class="select" id="dataSetFormat">
+                                        <option value="json">JSON</option>
+                                        <option value="csv">CSV</option>
+                                        <option value="html">HTML</option>
+                                        <!-- <option value="excel">EXCEL</option> -->
                                     </select>
                                 </div>
                             </div>
-                            <div class="column has-text-centered">
-                                <a class="delete removeFieldButton mt-2"></a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Field 2 -->
-                    <div class="box data-field secondary-color">
-                        <div class="columns is-centered">
-                            <div class="column">
-                                <input type="text" class="input field-name mx-4" value="email">
-                            </div>
-                            <div class="column">
-                                <div class="select ml-6">
-                                    <select class="data-type">
-                                        <option value="">Select data type</option>
-                                        <optgroup label="Personal data">
-                                            <option value="personal-firstname">Firstname</option>
-                                            <option value="personal-lastname">Lastname</option>
-                                            <option value="personal-age">Age</option>
-                                        </optgroup>
-                                        <optgroup label="numerical">
-                                            <option value="numerical-id">ID (Row number)</option>
-                                        </optgroup>
-                                        <optgroup label="geographical">
-                                            <option value="geographical-country">country</option>
-                                            <option value="geographical-city">city</option>
-                                            <option value="geographical-address">address</option>
-                                            <option value="geographical-street_address">street_address</option>
-                                        </optgroup>
-                                        <optgroup label="datetime">
-                                            <!-- <option value="datetime-date_between"></option> -->
-                                            <option value="datetime-month">Month number</option>
-                                            <option value="datetime-month_name">Month name</option>
-                                            <option value="datetime-time">Time (24 hour format)</option>
-                                            <option value="datetime-timezone">Timezone</option>
-                                            <option value="datetime-year">Year</option>
-                                        </optgroup>
-                                        <optgroup label="finance">
-                                            <option value="finance-currency_name">Currency name</option>
-                                            <option value="finance-currency_code">Currency code</option>
-                                            <option value="finance-currency_symbol">Currency sympol</option>
-                                            <option value="finance-bban">BBAN</option>
-                                            <option value="finance-iban">IBAN</option>
-                                            <option value="finance-credit_card_number">Credit card number</option>
-                                            <option value="finance-credit_card_provider">Credit card provider</option>
-                                        </optgroup>
-                                        <optgroup label="phone numbers">
-                                            <option value="phone_numbers-country_calling_code">Country calling code</option>
-                                            <option value="phone_numbers-phone_number">Phone number</option>
-                                        </optgroup>
-                                        <optgroup label="internet">
-                                            <option value="internet-username">Username</option>
-                                            <option value="internet-email" selected>Email</option>
-                                            <option value="internet-company_email">Company email</option>
-                                            <option value="internet-password">Password</option>
-                                            <option value="internet-domain_name">Domain name</option>
-                                            <option value="internet-url">Url</option>
-                                            <option value="internet-image_url">Image url</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="column has-text-centered">
-                                <a class="delete removeFieldButton mt-2"></a>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <button id="addFieldButton" class="button is-info">Add Field</button>
-
-                <div class="container options-container mt-6">
-
-                    <div class="field is-horizontal ">
-                        <div class="field-label is-normal">
-                            <label class="label has-text-white">Dataset name</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input" id="dataSetName" type="text" value="mock_data">
-                                </div>
-                            </div>
-                            <div class="field-label is-normal">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field is-horizontal ">
-                        <div class="field-label is-normal">
-                            <label class="label has-text-white">#Rows</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input" id="rowsNum" type="number" value="50">
-                                </div>
-                            </div>
-                            <div class="field-label is-normal">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label has-text-white">Data Format</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field is-narrow">
-                                <div class="control">
-                                    <div class="select is-fullwidth">
-                                        <select class="select" id="dataSetFormat">
-                                            <option value="json">JSON</option>
-                                            <option value="csv">CSV</option>
-                                            <option value="html">HTML</option>
-                                            <!-- <option value="excel">EXCEL</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field is-grouped is-grouped-centered mt-5 ">
-                        <p class="control">
-                            <a id="download-btn" class="button is-info">
-                                Download
-                            </a>
-                        </p>
-                        <p class="control">
-                            <a id="preview-btn" class="button is-info is-light">
-                                Preview
-                            </a>
-                        </p>
-                    </div>
-
+                <div class="field is-grouped is-grouped-centered mt-5 ">
+                    <p class="control">
+                        <a id="download-btn" class="button is-info">
+                            Download
+                        </a>
+                    </p>
+                    <p class="control">
+                        <a id="preview-btn" class="button is-info is-light">
+                            Preview
+                        </a>
+                    </p>
                 </div>
 
             </div>
-        </div>
-
-        <!-- Preview Modal -->
-        <div id="preview-modal" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Preview</p>
-                    <button class="delete close-modal" aria-label="close"></button>
-                </header>
-                <section class="modal-card-body pb-6">
-                    <div class="content">
-                        <table id="preview-table" class="table">
-                            <thead>
-                                <tr id="head-row">
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button close-modal">Close</button>
-                </footer>
-            </div>
-        </div>
-        <!-- End Modal -->
-
 
         </div>
-    </section>
+    </div>
 
-
-    <footer class="footer main-color mt-6">
-        <div class="content has-text-centered">
-            @ 2020 MOCKERDATA. ALL RIGHTS RESERVED  
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Preview</p>
+                <button class="delete close-modal" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body pb-6">
+                <div class="content">
+                    <table id="preview-table" class="table">
+                        <thead>
+                            <tr id="head-row">
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button close-modal">Close</button>
+            </footer>
         </div>
-    </footer>
+    </div>
+    <!-- End Modal -->
 
-    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-</body>
+    </div>
+</section>
 
-</html>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel='icon' type='image/x-icon' href="{{ url_for('static', filename='favicon.ico') }}" />
+    {% block title %}
+    <title>mockerdata - generate test data for your apps</title>
+    {% endblock %}
+</head>
+
+<body class="main-color">
+    <!-- Navbar -->
+    <nav class="navbar py-2 main-color">
+        <div class="navbar-brand ml-6">
+            <a href="{{ url_for('main_bp.home') }}" class="navbar-item ml-6">
+                <p class="has-text-weight-bold is-size-4 has-text-white">MockerData</p>
+            </a>
+
+            <a role="button" class="navbar-burger burger has-text-white" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu mr-6">
+            <div class="navbar-end mr-6">
+                <a href="https://github.com/mrbasel/mockerdata" class="navbar-item mx-5 has-text-white">Github</a>
+                <a href="{{ url_for('main_bp.about') }}" class="navbar-item mx-5 has-text-white">About</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+
+    <footer class="footer main-color mt-6">
+        <div class="content has-text-centered">
+            <p>@ 2020 MOCKERDATA. ALL RIGHTS RESERVED</p>
+            <a class="mx-5" href="https://github.com/mrbasel/mockerdata">Github</a>
+            <a class="mx-5" href="{{ url_for('main_bp.about') }}">About</a>
+        </div>
+    </footer>
+
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
