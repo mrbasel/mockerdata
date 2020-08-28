@@ -1,5 +1,5 @@
 
-export function getDataSet(downloadFile=true) {
+export function getDataSet() {
   // Get the dataset the users requested
 
   let dataSetName = document.querySelector("#dataSetName").value;
@@ -25,7 +25,6 @@ export function getDataSet(downloadFile=true) {
     data_format: dataSetFormat,
     rows: dataSetRows == null ? 50 : dataSetRows,
     field_values: dataSetFieldsValues,
-    download_file: downloadFile,
   };
 }
 

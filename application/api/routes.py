@@ -15,7 +15,6 @@ def create_file():
         data_format = request.json.get('data_format')
         rows = request.json.get('rows')
         field_values = request.json.get('field_values')
-        download_file = request.json.get('download_file')
 
         fields = [Field(name=field['fieldName'], data_type=field['dataType']) for field in field_values]
 
@@ -31,12 +30,35 @@ def create_file():
             data = data_generator.generate_data()
         except TypeError as e:
             return 'Invalid data', 400
-        
-        if not download_file:
-            return jsonify(data)
-
+            
 
         file_creator = FileCreator(data, dataset_name, data_format)
         response = file_creator.create_file()
         
         return response
+
+
+@api_bp.route('/api/preview/data', methods=["POST"])
+def preview_data():
+    if request.method == 'POST':
+        field_values = request.json.get('field_values')
+        fields = [Field(name=field['fieldName'], data_type=field['dataType']) for field in field_values]
+
+        data_set = DataSet(
+            name='', 
+            rows=10,
+            data_format='json',
+             fields=fields
+             )
+        
+        data_generator = DataGenerator(data_set)
+        try:
+            data = data_generator.generate_data()
+        except TypeError as e:
+            return 'Invalid data', 400
+        
+        return {
+            'data': data,
+            'fields': list(data[0].keys())
+        }
+        

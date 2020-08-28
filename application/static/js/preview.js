@@ -2,21 +2,20 @@ import { getDataSet } from "./dataset.js";
 
 
 export default function previewData() {
-    let dataSet = getDataSet(false);
-    dataSet.rows = 10;
-
-    fetch(window.origin + "/api/create/file", {
+    let dataSet = getDataSet();
+    
+    fetch(window.origin + "/api/preview/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataSet),
     })
-    .then((response) => response.text())
-    .then((data) => {
-        displayPreviewData(JSON.parse(data));
-    })
-    ;
+      .then((response) => Promise.all([response.text()]))
+      .then((data) => {
+          const previewData = JSON.parse(data);
+        displayPreviewData(previewData.data);
+      });
 
 }
 
