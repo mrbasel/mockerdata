@@ -37,6 +37,7 @@ class FileCreator:
             'json': self.create_json_file,
             'csv': self.create_csv_file,
             'html': self.create_html_file,
+            'sql': self.create_sql_file
         }
 
         # Get function that returns a generator with specified type 
@@ -107,4 +108,18 @@ class FileCreator:
 
 
     def create_sql_file(self):
-        pass
+        def generate_sql():
+            table_name = self.filename
+            columns = str(tuple(self.data[0].keys()))
+
+            for row in self.data:
+                data_values = str(tuple(row.values()))
+                insert_statment = "INSERT INTO {} {} VALUES {};\n".format(table_name, columns.replace("'", ""), data_values)
+                
+                yield insert_statment
+        
+        generator = generate_sql()
+
+        return generator
+
+            
